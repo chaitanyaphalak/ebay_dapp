@@ -1,0 +1,773 @@
+{
+  "contractName": "EcommerceStore",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "productIndex",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x60606040523415600e57600080fd5b60008081905550609c806100236000396000f300606060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063c897d5a6146044575b600080fd5b3415604e57600080fd5b6054606a565b6040518082815260200191505060405180910390f35b600054815600a165627a7a723058204012cc83646e751a2aa30b1d5586fb4639e2283eaa1e26ff851cd4a4c75f37350029",
+  "deployedBytecode": "0x606060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063c897d5a6146044575b600080fd5b3415604e57600080fd5b6054606a565b6040518082815260200191505060405180910390f35b600054815600a165627a7a723058204012cc83646e751a2aa30b1d5586fb4639e2283eaa1e26ff851cd4a4c75f37350029",
+  "sourceMap": "26:724:0:-;;;683:65;;;;;;;;740:1;725:12;:16;;;;26:724;;;;;;",
+  "deployedSourceMap": "26:724:0:-;;;;;;;;;;;;;;;;;;;;;;;;141:24;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.13;\n\ncontract EcommerceStore {\n    enum ProductStatus { Open, Sold, UnSold}\n    enum ProductCondition { New, Used}\n\n    uint public productIndex;\n\n    mapping (address => mapping(uint => Product)) stores;\n    mapping (uint => address) productIdInStore;\n\n    struct Product {\n        uint id;\n        string name;\n        string category;\n        string imageLink;\n        string descLink;\n        uint auctionStartTime;\n        uint auctionEndTime;\n        uint startPrice;\n        address highestBidder;\n        uint highestBid;\n        uint secondHighestBid;\n        uint totalBids;\n        ProductStatus status;\n        ProductCondition condition;\n    }\n\n    function EcommerceStore() public{\n        productIndex = 0;\n    }\n}\n",
+  "sourcePath": "/Users/joseph/Documents/joseph/Etherium/ethereum_voting_dapp/ebay_dapp/contracts/EcommerceStore.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/joseph/Documents/joseph/Etherium/ethereum_voting_dapp/ebay_dapp/contracts/EcommerceStore.sol",
+      "exportedSymbols": {
+        "EcommerceStore": [
+          58
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".13"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            58
+          ],
+          "name": "EcommerceStore",
+          "scope": 59
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "EcommerceStore.ProductStatus",
+              "name": "ProductStatus"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "Open"
+                },
+                "id": 2,
+                "name": "EnumValue",
+                "src": "77:4:0"
+              },
+              {
+                "attributes": {
+                  "name": "Sold"
+                },
+                "id": 3,
+                "name": "EnumValue",
+                "src": "83:4:0"
+              },
+              {
+                "attributes": {
+                  "name": "UnSold"
+                },
+                "id": 4,
+                "name": "EnumValue",
+                "src": "89:6:0"
+              }
+            ],
+            "id": 5,
+            "name": "EnumDefinition",
+            "src": "56:40:0"
+          },
+          {
+            "attributes": {
+              "canonicalName": "EcommerceStore.ProductCondition",
+              "name": "ProductCondition"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "New"
+                },
+                "id": 6,
+                "name": "EnumValue",
+                "src": "125:3:0"
+              },
+              {
+                "attributes": {
+                  "name": "Used"
+                },
+                "id": 7,
+                "name": "EnumValue",
+                "src": "130:4:0"
+              }
+            ],
+            "id": 8,
+            "name": "EnumDefinition",
+            "src": "101:34:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "productIndex",
+              "scope": 58,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint",
+                  "type": "uint256"
+                },
+                "id": 9,
+                "name": "ElementaryTypeName",
+                "src": "141:4:0"
+              }
+            ],
+            "id": 10,
+            "name": "VariableDeclaration",
+            "src": "141:24:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "stores",
+              "scope": 58,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => mapping(uint256 => struct EcommerceStore.Product storage ref))",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => mapping(uint256 => struct EcommerceStore.Product storage ref))"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 11,
+                    "name": "ElementaryTypeName",
+                    "src": "181:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "type": "mapping(uint256 => struct EcommerceStore.Product storage ref)"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 12,
+                        "name": "ElementaryTypeName",
+                        "src": "200:4:0"
+                      },
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Product",
+                          "referencedDeclaration": 49,
+                          "type": "struct EcommerceStore.Product storage pointer"
+                        },
+                        "id": 13,
+                        "name": "UserDefinedTypeName",
+                        "src": "208:7:0"
+                      }
+                    ],
+                    "id": 14,
+                    "name": "Mapping",
+                    "src": "192:24:0"
+                  }
+                ],
+                "id": 15,
+                "name": "Mapping",
+                "src": "172:45:0"
+              }
+            ],
+            "id": 16,
+            "name": "VariableDeclaration",
+            "src": "172:52:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "productIdInStore",
+              "scope": 58,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(uint256 => address)",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(uint256 => address)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 17,
+                    "name": "ElementaryTypeName",
+                    "src": "239:4:0"
+                  },
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 18,
+                    "name": "ElementaryTypeName",
+                    "src": "247:7:0"
+                  }
+                ],
+                "id": 19,
+                "name": "Mapping",
+                "src": "230:25:0"
+              }
+            ],
+            "id": 20,
+            "name": "VariableDeclaration",
+            "src": "230:42:0"
+          },
+          {
+            "attributes": {
+              "canonicalName": "EcommerceStore.Product",
+              "name": "Product",
+              "scope": 58,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "id",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 21,
+                    "name": "ElementaryTypeName",
+                    "src": "304:4:0"
+                  }
+                ],
+                "id": 22,
+                "name": "VariableDeclaration",
+                "src": "304:7:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "name",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 23,
+                    "name": "ElementaryTypeName",
+                    "src": "321:6:0"
+                  }
+                ],
+                "id": 24,
+                "name": "VariableDeclaration",
+                "src": "321:11:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "category",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 25,
+                    "name": "ElementaryTypeName",
+                    "src": "342:6:0"
+                  }
+                ],
+                "id": 26,
+                "name": "VariableDeclaration",
+                "src": "342:15:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "imageLink",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 27,
+                    "name": "ElementaryTypeName",
+                    "src": "367:6:0"
+                  }
+                ],
+                "id": 28,
+                "name": "VariableDeclaration",
+                "src": "367:16:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "descLink",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 29,
+                    "name": "ElementaryTypeName",
+                    "src": "393:6:0"
+                  }
+                ],
+                "id": 30,
+                "name": "VariableDeclaration",
+                "src": "393:15:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "auctionStartTime",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 31,
+                    "name": "ElementaryTypeName",
+                    "src": "418:4:0"
+                  }
+                ],
+                "id": 32,
+                "name": "VariableDeclaration",
+                "src": "418:21:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "auctionEndTime",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 33,
+                    "name": "ElementaryTypeName",
+                    "src": "449:4:0"
+                  }
+                ],
+                "id": 34,
+                "name": "VariableDeclaration",
+                "src": "449:19:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "startPrice",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 35,
+                    "name": "ElementaryTypeName",
+                    "src": "478:4:0"
+                  }
+                ],
+                "id": 36,
+                "name": "VariableDeclaration",
+                "src": "478:15:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "highestBidder",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 37,
+                    "name": "ElementaryTypeName",
+                    "src": "503:7:0"
+                  }
+                ],
+                "id": 38,
+                "name": "VariableDeclaration",
+                "src": "503:21:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "highestBid",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 39,
+                    "name": "ElementaryTypeName",
+                    "src": "534:4:0"
+                  }
+                ],
+                "id": 40,
+                "name": "VariableDeclaration",
+                "src": "534:15:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "secondHighestBid",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 41,
+                    "name": "ElementaryTypeName",
+                    "src": "559:4:0"
+                  }
+                ],
+                "id": 42,
+                "name": "VariableDeclaration",
+                "src": "559:21:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "totalBids",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 43,
+                    "name": "ElementaryTypeName",
+                    "src": "590:4:0"
+                  }
+                ],
+                "id": 44,
+                "name": "VariableDeclaration",
+                "src": "590:14:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "status",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "enum EcommerceStore.ProductStatus",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "ProductStatus",
+                      "referencedDeclaration": 5,
+                      "type": "enum EcommerceStore.ProductStatus"
+                    },
+                    "id": 45,
+                    "name": "UserDefinedTypeName",
+                    "src": "614:13:0"
+                  }
+                ],
+                "id": 46,
+                "name": "VariableDeclaration",
+                "src": "614:20:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "condition",
+                  "scope": 49,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "enum EcommerceStore.ProductCondition",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "ProductCondition",
+                      "referencedDeclaration": 8,
+                      "type": "enum EcommerceStore.ProductCondition"
+                    },
+                    "id": 47,
+                    "name": "UserDefinedTypeName",
+                    "src": "644:16:0"
+                  }
+                ],
+                "id": 48,
+                "name": "VariableDeclaration",
+                "src": "644:26:0"
+              }
+            ],
+            "id": 49,
+            "name": "StructDefinition",
+            "src": "279:398:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "EcommerceStore",
+              "payable": false,
+              "scope": 58,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 50,
+                "name": "ParameterList",
+                "src": "706:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 51,
+                "name": "ParameterList",
+                "src": "715:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10,
+                              "type": "uint256",
+                              "value": "productIndex"
+                            },
+                            "id": 52,
+                            "name": "Identifier",
+                            "src": "725:12:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 53,
+                            "name": "Literal",
+                            "src": "740:1:0"
+                          }
+                        ],
+                        "id": 54,
+                        "name": "Assignment",
+                        "src": "725:16:0"
+                      }
+                    ],
+                    "id": 55,
+                    "name": "ExpressionStatement",
+                    "src": "725:16:0"
+                  }
+                ],
+                "id": 56,
+                "name": "Block",
+                "src": "715:33:0"
+              }
+            ],
+            "id": 57,
+            "name": "FunctionDefinition",
+            "src": "683:65:0"
+          }
+        ],
+        "id": 58,
+        "name": "ContractDefinition",
+        "src": "26:724:0"
+      }
+    ],
+    "id": 59,
+    "name": "SourceUnit",
+    "src": "0:751:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-01-30T22:08:35.916Z"
+}
