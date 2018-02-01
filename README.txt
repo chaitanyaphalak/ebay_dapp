@@ -30,6 +30,15 @@ Make sure to make changes to migrations/2_deploy_contracts.js to point to your s
     web3.toWei(1, 'ether')
     web3.fromWei(1, 'ether')
 
+    amt_1 = web3.toWei(1, 'ether');
+    current_time = Math.round(new Date() / 1000);
+
 8. Start truffle console and add a product to the blockchain.
    You can enter random string name for image and description links.
-   EcommerceStore.deployed().then(function(contractInstance) {contractInstance.addProductToStore().then()} )
+   EcommerceStore.deployed().then(function(contractInstance) {contractInstance.addProductToStore('Google Pixel', 'Phone',
+   'junk_image_link', 'junk_desc_link', current_time, current_time + 200, amt_1, 0).then(function(out) {console.log(out)})} )
+
+9. Retrieve the product you inserted by product id (Since this was the first product you added, the product id will be 1).
+
+    EcommerceStore.deployed().then(function(contractInstance) {contractInstance.getProduct(1).then(function(v) {console.log(v)})})
+
