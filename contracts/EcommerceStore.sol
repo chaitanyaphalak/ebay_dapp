@@ -70,7 +70,7 @@ contract EcommerceStore {
     function revealBid(uint productId, string _amount, string secretKey) public {
         Product storage product = stores[productIdInStore[productId]][productId];
         require (now > product.auctionEndTime);
-        bytes32 sealedBid = keccak256(_amount, secretKey);
+        bytes32 sealedBid = sha3(_amount, secretKey);
 
         Bid memory bidInfo = product.bids[msg.sender][sealedBid];
         require(bidInfo.bidder > 0);
@@ -88,25 +88,27 @@ contract EcommerceStore {
                 product.secondHighestBid = product.startPrice;
                 refund = bidInfo.value - amount;
             }
-            else if (amount > product.highestBid) {
-                product.secondHighestBid = product.highestBid;
-                // send ether to address
-                product.highestBidder.transfer(product.highestBid);
-                product.highestBidder = msg.sender;
-                product.highestBid = amount;
-                refund = bidInfo.value - amount;
-            }
-            else if (amount > product.secondHighestBid){
-                product.secondHighestBid = amount;
-                refund = amount;
-            }
             else {
-                refund = amount;
-            }
+                if (amount > product.highestBid) {
+                    product.secondHighestBid = product.highestBid;
+                    // send ether to address
+                    product.highestBidder.transfer(product.highestBid);
+                    product.highestBidder = msg.sender;
+                    product.highestBid = amount;
+                    refund = bidInfo.value - amount;
+                }
+                else if (amount > product.secondHighestBid){
+                    product.secondHighestBid = amount;
+                    refund = amount;
+                }
+                else {
+                    refund = amount;
+                }
         }
         if (refund > 0){
             msg.sender.transfer(refund);
             product.bids[msg.sender][sealedBid].revealed = true;
+            }
         }
     }
 
