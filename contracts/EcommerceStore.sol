@@ -112,13 +112,13 @@ contract EcommerceStore {
         }
     }
 
-    function highestBidderInfo(uint _productId) view public returns (address, uint, uint) {
-        Product memory product = stores[productIdInStore[_productId]][_productId];
+    function highestBidderInfo(uint productId) view public returns (address, uint, uint) {
+        Product memory product = stores[productIdInStore[productId]][productId];
         return (product.highestBidder, product.highestBid, product.secondHighestBid);
     }
 
-    function totalBids(uint _productId) view public returns (uint) {
-        Product memory product = stores[productIdInStore[_productId]][_productId];
+    function totalBids(uint productId) view public returns (uint) {
+        Product memory product = stores[productIdInStore[productId]][productId];
         return product.totalBids;
     }
 
